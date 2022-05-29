@@ -1,8 +1,17 @@
 Parent;Aliases;Type;CustomType;Target;Items;TimeoutWait;Description
 ;Все_элементы;Page;;;;;
 Все_элементы;Главная страница;Page;;;;;
-Все_элементы.Главная страница;Карта с доставкой;StaticText;;//h2[contains(text(),'Карта с доставкой')];;;
-Все_элементы.Главная страница;Город;TextInput;;//span[contains(@data-test-id,'city')]//input;;;
+Все_элементы.Главная страница;Заголовок;StaticText;;//h2[contains(text(),'Интернет Банк')];;;
+Все_элементы.Главная страница;Логин;TextInput;;//span[contains(@data-test-id,'login')]//input;;;
+Все_элементы.Главная страница;Не заполнен логин;StaticText;;//span[contains(@data-test-id,'login')]//span[contains(text(),'Поле обязательно для заполнения')];;;
+Все_элементы.Главная страница;Пароль;TextInput;;//span[contains(@data-test-id,'password')]//input;;;
+Все_элементы.Главная страница;Не заполнен пароль;StaticText;;//span[contains(@data-test-id,'password')]//span[contains(text(),'Поле обязательно для заполнения')];;;
+
+Все_элементы.Главная страница;Продолжить;Button;;//button[contains(@data-test-id,'action-login')];;;
+Все_элементы;Личный кабинет;Page;;;;;
+Все_элементы.Личный кабинет;Заголовок;StaticText;;//h2[contains(text(),'Личный кабинет')];;;
+
+
 Все_элементы.Главная страница;Неправильный город;StaticText;;//span[contains(text(),'Доставка в выбранный город недоступна')];;;
 Все_элементы.Главная страница;Не заполнен город;StaticText;;//span[contains(@data-test-id,'city')]//span[contains(text(),'Поле обязательно для заполнения')];;;
 Все_элементы.Главная страница;Дата встречи;DateInput;;//span[contains(@data-test-id,'date')]//input;;;
@@ -16,11 +25,8 @@ Parent;Aliases;Type;CustomType;Target;Items;TimeoutWait;Description
 Все_элементы.Главная страница;Согласие на обработку данных;CheckBox;;//label[contains(@data-test-id,'agreement')]/span[./input];;;
 Все_элементы.Главная страница;Не принято соглашение;StaticText;;//label[contains(@data-test-id,'agreement') and contains(@class,'_invalid')]/span;;;
 Все_элементы.Главная страница;Запланировать;Button;;//span[contains(text(),'Запланировать')];;;
-Все_элементы;Оповещение об успехе;Page;;;;;
-Все_элементы.Оповещение об успехе;Заголовок;StaticText;;//div[contains(@data-test-id,'success-notification')]/div[contains(text(),"Успешно")];;;
-Все_элементы.Оповещение об успехе;Закрыть;Button;;//div[contains(@data-test-id,'success-notification')]/button;;;
-Все_элементы;Оповещение о перепланировании;Page;;;;;
-Все_элементы.Оповещение о перепланировании;Заголовок;StaticText;;//div[contains(@data-test-id,'replan-notification')]/div[contains(text(),"Необходимо подтверждение")];;;
-Все_элементы.Оповещение о перепланировании;Перепланировать;Button;;//span[contains(text(),'Перепланировать')];;;
-Все_элементы.Оповещение о перепланировании;Закрыть;Button;;//div[contains(@data-test-id,'replan-notification')]/button;;;
+Все_элементы;Оповещение об ошибке;Page;;;;;
+Все_элементы.Оповещение об ошибке;Заголовок;StaticText;;//div[contains(@data-test-id,'error-notification')]/div[contains(text(),"Ошибка")];;;
+Все_элементы.Оповещение об ошибке;Закрыть;Button;;//div[contains(@data-test-id,'error-notification')]/button;;;
+Все_элементы.Оповещение об ошибке;Ошибка;StaticText;;//div[contains(@data-test-id,'error-notification')]/div[contains(@class,'notification__content')];;;
 

@@ -27,7 +27,11 @@ public class ClassGenerator {
 	private static final String GENERATED_CLASSES_PREFIX = "GeneratedSuite_";
 	private static final String GENERATED_CLASSES_PACKAGE = "features";
 	private static final String GENERATED_CLASSES_DIR = "src/test/java/generated-files";
+	private static final String GENERATED_DATA_FILES_PREFIX = "GeneratedUser_";
+	private static final String[] GENERATED_USER_PREFIX = {"active", "blocked", "other"};
+	private static final String GENERATED_DATA_FILES_PACKAGE = "testdata";
 	private static final String GENERATED_RESOURCES_DIR = "src/test/resources";
+	private static final int NUMBER_OF_TEST_FILES_TO_GENERATE = 30;
 	private static String COMMON_PATH = System.getProperty("suitesPath", "");
 
 	List<CucumberFeature> cucumberFeatures;
@@ -69,6 +73,37 @@ public class ClassGenerator {
 		suiteClassGeneratorHelper
 				.getSingleStoriesPathsByCommonPath(GENERATED_RESOURCES_DIR + COMMON_PATH).forEach(
 				k -> createNewSuiteClassFileFromSource(getGeneratedClassSource(k, runner)));
+	}
+
+	public void generateAllTestDataFiles() {
+		Gson gson = new Gson();
+		String generatedDirectoryPath = null;
+		try {
+			generatedDirectoryPath =
+					"./" + GENERATED_CLASSES_DIR + "/" + GENERATED_DATA_FILES_PACKAGE;
+			Files.createDirectories(Paths.get(generatedDirectoryPath).getParent());
+			Files.createDirectories(Paths.get(generatedDirectoryPath));
+			Path generatedFilePath;
+			for (String status : GENERATED_USER_PREFIX) {
+				for (int i = 0; i < NUMBER_OF_TEST_FILES_TO_GENERATE; i++) {
+					String generatedFileName = GENERATED_DATA_FILES_PREFIX + status + i;
+					generatedFilePath =
+							Paths.get(generatedDirectoryPath + "/" + generatedFileName + ".json");
+					try (Writer writer = Files.newBufferedWriter(generatedFilePath)) {
+						Files.createDirectories(generatedFilePath.getParent());
+						gson.toJson(FakerClass.getInstance().createUser(status), writer);
+					} catch (IOException e) {
+						throw new RuntimeException(String.format(
+								"Ошибка при генерации тестового файла. Создаваемый файл: %s",
+								generatedFilePath.toString()), e);
+					}
+				}
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(String.format(
+					"Ошибка при генерации папки для тестовых файлов. Создаваемый каталог: %s",
+					generatedDirectoryPath), e);
+		}
 	}
 
 	private List<CucumberFeature> getCucumberFeatures() {

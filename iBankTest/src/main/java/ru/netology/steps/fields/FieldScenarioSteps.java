@@ -2,6 +2,7 @@ package ru.netology.steps.fields;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 
 import io.qameta.allure.Step;
@@ -29,6 +30,13 @@ public class FieldScenarioSteps {
 		expected = AbstractStepsHolder.evalVariable(expected);
 		assertEquals(String.format("Значение поля [%s] не соответствует ожидаемому [%s]", fieldName,
 				expected), expected, actual);
+	}
+
+	@Step("значение поля \"{fieldName}\" содержит \"{expected}\"")
+	public void checkContainsFieldValue(String fieldName, String expected) {
+		String actual = getFieldValue(fieldName);
+		expected = AbstractStepsHolder.evalVariable(expected);
+		assertTrue(String.format("Значение поля [%s] не содержит значение [%s]", fieldName, expected), actual.contains(expected));
 	}
 
 	@Step

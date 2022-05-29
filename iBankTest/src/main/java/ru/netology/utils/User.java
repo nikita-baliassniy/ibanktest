@@ -1,18 +1,20 @@
 package ru.netology.utils;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
-	private String name;
+	private String login;
 
 	private String password;
 
-	@Setter
 	private String status;
+
+	private String jsonBody;
 }
 

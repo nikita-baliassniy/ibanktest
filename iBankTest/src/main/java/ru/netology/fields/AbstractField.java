@@ -25,11 +25,6 @@ public abstract class AbstractField {
 		this.element = element;
 	}
 
-
-	public void scrollToElement() {
-		element.scrollTo();
-	}
-
 	public void waitElementVisibility() {
 		element.waitUntil(Condition.visible, DriverManager.getDefaultImplicitlyWait());
 	}

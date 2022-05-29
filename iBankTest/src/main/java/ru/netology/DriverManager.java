@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.ie.InternetExplorerOptions;
 import ru.netology.core.definitions.FieldDefinitions;
 import ru.netology.enums.BrowserEnum;
 import ru.netology.properties.TestProperties;
@@ -65,11 +63,6 @@ public class DriverManager {
 						properties.getProperty("webdriver.chrome.driver"));
 				driver = new ChromeDriver(options);
 				break;
-			case IE:
-				System.setProperty("webdriver.ie.driver",
-						properties.getProperty("webdriver.ie.driver"));
-				driver = new InternetExplorerDriver(initIEOptions());
-				break;
 			case FIREFOX:
 				System.setProperty("webdriver.gecko.driver",
 						properties.getProperty("webdriver.gecko.driver"));
@@ -83,18 +76,11 @@ public class DriverManager {
 		return driver;
 	}
 
-	private static InternetExplorerOptions initIEOptions() {
-		InternetExplorerOptions options = new InternetExplorerOptions();
-		options.setCapability("ie.usePerProcessProxy", true);
-		options.setCapability("ie.setProxyByServer", true);
-		return options;
-	}
-
 	private static void setDefinitions() {
 		String elementDefinitionFilePath = TestProperties.getInstance().getProperties()
 				.getProperty("element.definitions.path");
 		ELEMENT_DEFINITIONS = new FieldDefinitions();
-		ELEMENT_DEFINITIONS.load(elementDefinitionFilePath);
+		FieldDefinitions.load(elementDefinitionFilePath);
 	}
 
 	public static void setImplicitlyWait(long time) {

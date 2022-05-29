@@ -2,8 +2,8 @@ package ru.netology.pages;
 
 import ru.netology.core.annotations.Container;
 
-@Container(ref = "Оповещение об успехе")
-public class SuccessNotification extends CustomAbstractPageObject {
+@Container(ref = "Личный кабинет")
+public class PersonalAccount extends CustomAbstractPageObject {
 	public boolean isLoaded() {
 		this.getField("Заголовок").waitElementVisibility();
 		waitUntilJQueryReady();

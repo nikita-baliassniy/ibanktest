@@ -15,12 +15,12 @@ public class JsonDataReader {
 		testDataFilesPath = TestProperties.getInstance().getProperties().getProperty("file.path");
 	}
 
-	public User getRandomUserData(){
+	public User getUserData(String fileName) {
 		Gson gson = new Gson();
-		Path pathToFile = Paths.get(testDataFilesPath + "/" + "user.json");
+		Path pathToFile = Paths.get(testDataFilesPath + "/" + fileName);
 		try {
 			User user = gson.fromJson(Files.newBufferedReader(pathToFile), User.class);
-			Files.delete(pathToFile);
+			user.setJsonBody(Files.newBufferedReader(pathToFile).readLine());
 			return user;
 		} catch (IOException e) {
 			throw new RuntimeException(

@@ -9,6 +9,7 @@ public class RunnerClassGenerator {
 
 	public static void main(String[] args) {
 		ClassGenerator storySuitesClassGenerator = new ClassGenerator();
+		storySuitesClassGenerator.generateAllTestDataFiles();
 		storySuitesClassGenerator.generateAllSuiteClasses(CucumberRunner.class);
 	}
 }
