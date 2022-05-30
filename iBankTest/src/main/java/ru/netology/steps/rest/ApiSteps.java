@@ -1,10 +1,10 @@
 package ru.netology.steps.rest;
 
+import static ru.netology.steps.AbstractStepsHolder.evalVariable;
+
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
-
-
-import static ru.netology.steps.AbstractStepsHolder.evalVariable;
 
 public class ApiSteps {
 

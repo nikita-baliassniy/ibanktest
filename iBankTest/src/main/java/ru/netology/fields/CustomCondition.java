@@ -20,19 +20,4 @@ public class CustomCondition {
 			}
 		}
 	};
-
-	public static Condition containsAttribute(final String attributeName,
-											  final String expectedAttributeValue) {
-		return new Condition("containsAttribute") {
-			@Override
-			public boolean apply(WebElement element) {
-				return element.getAttribute(attributeName).contains(expectedAttributeValue);
-			}
-
-			@Override
-			public String toString() {
-				return name + " " + attributeName + " contains " + expectedAttributeValue;
-			}
-		};
-	}
 }

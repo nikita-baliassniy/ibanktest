@@ -31,7 +31,7 @@ public class ClassGenerator {
 	private static final String[] GENERATED_USER_PREFIX = {"active", "blocked", "other"};
 	private static final String GENERATED_DATA_FILES_PACKAGE = "testdata";
 	private static final String GENERATED_RESOURCES_DIR = "src/test/resources";
-	private static final int NUMBER_OF_TEST_FILES_TO_GENERATE = 30;
+	private static final int NUMBER_OF_TEST_FILES_TO_GENERATE = 10;
 	private static String COMMON_PATH = System.getProperty("suitesPath", "");
 
 	List<CucumberFeature> cucumberFeatures;

@@ -1,13 +1,13 @@
 package ru.netology.steps.rest;
 
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import lombok.extern.slf4j.Slf4j;
-
-
 import static io.restassured.RestAssured.given;
 import static ru.netology.steps.AbstractStepsHolder.evalVariable;
 import static ru.netology.steps.AbstractStepsHolder.getVariable;
+
+
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Request {

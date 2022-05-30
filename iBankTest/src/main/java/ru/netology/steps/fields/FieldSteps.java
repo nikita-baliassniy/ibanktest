@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 import ru.netology.steps.AbstractStepsHolder;
 
 public class FieldSteps extends AbstractStepsHolder {

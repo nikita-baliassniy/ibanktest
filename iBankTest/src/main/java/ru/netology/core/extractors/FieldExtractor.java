@@ -25,6 +25,7 @@ import ru.netology.DriverManager;
 import ru.netology.core.annotations.Container;
 import ru.netology.core.annotations.Locator;
 import ru.netology.core.definitions.FieldDefinition;
+import ru.netology.core.definitions.FieldDefinitions;
 import ru.netology.fields.AbstractField;
 import ru.netology.pages.CollectionPageObject;
 import ru.netology.pages.IPageObject;
@@ -73,7 +74,6 @@ public class FieldExtractor {
 	}
 
 	public static <T extends AbstractField> T getField(IPageObject page, String name) {
-
 		FieldDefinition field = getFieldDefinition(page, name);
 		Assert.assertNotNull(String.format("Не найдено поле: [%s] в описании полей", name), field);
 		final String locator = field.getTarget();
@@ -135,7 +135,7 @@ public class FieldExtractor {
 		FieldDefinition fieldDefinition = getFieldDefinition(page, fieldName);
 		Container container = page.getClass().getAnnotation(Container.class);
 		String ref = container.ref() + "." + fieldDefinition.getAliases();
-		List<FieldDefinition> fields = DriverManager.getElementDefinitions().
+		List<FieldDefinition> fields = FieldDefinitions.
 				getDefinitionsPageByContainer("Все_элементы." + ref);
 		DriverManager.getWebDriver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		ElementsCollection items = $$(By.xpath(fields.get(0).getTarget()));

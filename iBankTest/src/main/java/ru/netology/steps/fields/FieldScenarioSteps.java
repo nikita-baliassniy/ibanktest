@@ -1,7 +1,6 @@
 package ru.netology.steps.fields;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
@@ -46,12 +45,6 @@ public class FieldScenarioSteps {
 	}
 
 	@Step
-	public void fieldIsNotPresent(String fieldName) {
-		boolean isPresent = fieldIsPresent(fieldName);
-		assertFalse("Поле " + fieldName + " не существует на странице", isPresent);
-	}
-
-	@Step
 	public boolean fieldIsPresent(String fieldName) {
 		IPageObject page = AbstractPageObject.getCurrentPage();
 		return page.getField(fieldName).isDisplayed();
@@ -62,5 +55,4 @@ public class FieldScenarioSteps {
 		IPageObject page = AbstractPageObject.getCurrentPage();
 		page.getField(fieldName).clear();
 	}
-
 }

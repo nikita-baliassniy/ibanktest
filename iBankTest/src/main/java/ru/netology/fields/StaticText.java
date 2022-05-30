@@ -14,16 +14,6 @@ public class StaticText extends AbstractField {
 	}
 
 	@Override
-	public String getErrorMsg() {
-		return null;
-	}
-
-	@Override
-	public boolean isEditable() {
-		return false;
-	}
-
-	@Override
 	public String getLabel() {
 		return null;
 	}

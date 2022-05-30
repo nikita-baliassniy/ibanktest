@@ -1,17 +1,13 @@
 package ru.netology.pages;
 
-import static com.codeborne.selenide.Selenide.$;
 import static ru.netology.DriverManager.getWebDriver;
-import static ru.netology.fields.CustomCondition.present;
 
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.netology.DriverManager;
 import ru.netology.utils.TimeOutUtils;
 
 public abstract class CustomAbstractPageObject extends AbstractPageObject {
@@ -21,20 +17,6 @@ public abstract class CustomAbstractPageObject extends AbstractPageObject {
 	private static Wait<WebDriver> wait = new WebDriverWait(getWebDriver(), 200);
 	private static final String spinnerXPath =
 			"//table[contains(@id,'j_idt')]//td[contains(text(),'Пожалуйста, ожидайте.')]";
-
-	public static void waitForResponseJsonUpdate() {
-		TimeOutUtils.waitTimeOut(3);
-		waitUntilJQueryReady();
-	}
-
-	public static void waitForPageReload() {
-		TimeOutUtils.waitTimeOut(2);
-		$(By.xpath(xpathLoadWindow)).waitWhile(present, DriverManager.getDefaultImplicitlyWait());
-		if ($(By.xpath(spinnerXPath)).exists()) {
-			$(By.xpath(spinnerXPath)).waitWhile(present, DriverManager.getDefaultImplicitlyWait());
-		}
-		waitUntilJQueryReady();
-	}
 
 	private static void waitForJQueryLoad() {
 		TimeOutUtils.waitTimeOut(5);
