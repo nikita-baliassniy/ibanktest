@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
+import ru.netology.CucumberRunner;
 
 @Slf4j
 public class ClassGenerator {
@@ -107,8 +108,8 @@ public class ClassGenerator {
 	}
 
 	private List<CucumberFeature> getCucumberFeatures() {
-		RuntimeOptionsFactory runtimeOptionsFactory = new RuntimeOptionsFactory(BaseRunner.class);
-		ClassLoader classLoader = BaseRunner.class.getClassLoader();
+		RuntimeOptionsFactory runtimeOptionsFactory = new RuntimeOptionsFactory(CucumberRunner.class);
+		ClassLoader classLoader = CucumberRunner.class.getClassLoader();
 		RuntimeOptions runtimeOptions = runtimeOptionsFactory.create();
 		ResourceLoader resourceLoader = new MultiLoader(classLoader);
 		return runtimeOptions.cucumberFeatures(resourceLoader);
